@@ -1,9 +1,42 @@
-*.iml
-.gradle
-/local.properties
-/.idea/workspace.xml
-/.idea/libraries
+
+#built application files
+*.apk
+*.ap_
+
+# files for the dex VM
+*.dex
+
+# Java class files
+*.class
+
+# generated files
+bin/
+gen/
+obj/
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Windows thumbnail db
+Thumbs.db
+
+# OSX files
 .DS_Store
-/build
-/captures
-.externalNativeBuild
+
+# Android Studio
+.gradle
+build/
+*.ipr
+*.iws
+**/.idea/workspace.xml
+**/.idea/tasks.xml
+**/.idea/libraries
+**/.idea/misc.xml
+**/.idea/gradle.xml
+**/.idea/modules.xml
+**/.idea/runConfigurations.xml
+**/.idea/misc.xml
+/*/captures
+# Ignore modules *.iml Android Studio uses build.gradle as its source of truth (https://code.google.com/p/android/issues/detail?id=156708)
+*.iml
+

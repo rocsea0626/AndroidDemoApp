@@ -15,11 +15,61 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("storeFile")
+            storePassword "storePassword"
+            keyAlias "keyAlias"
+            keyPassword "keyPassword"
+        }
+    }
+
+    productFlavors {
+        // Define separate dev and prod product flavors.
+        dev {
+            // dev utilizes minSDKVersion = 21 to allow the Android gradle plugin
+            // to pre-dex each module and produce an APK that can be tested on
+            // Android Lollipop without time consuming dex merging processes.
+            minSdkVersion 21
+            multiDexEnabled true
+        }
+        prod {
+            // The actual minSdkVersion for the application.
+            minSdkVersion 21
+        }
+
+        beta {
+            versionName "1.0b1"
+            minSdkVersion 19
+        }
+    }
+
+
     buildTypes {
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'),
+                    'proguard-rules.pro', 'butterknife-proguard-rules.pro', 'eventbus-proguard-rules.pro'
+//            signingConfig signingConfigs.release
         }
+
+        debug {
+            applicationIdSuffix ".debug"
+            minifyEnabled false
+        }
+
+        // Get default values from debug flavor
+                .initWith(buildTypes.debug)
+        staging {
+            applicationIdSuffix ".staging"
+        }
+
     }
 }
 
