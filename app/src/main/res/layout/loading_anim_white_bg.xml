@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="@dimen/loading_anim_width"
+             android:layout_height="@dimen/loading_anim_height"
+             android:layout_gravity="center"
+             android:layout_marginBottom="32dp"
+             android:background="@drawable/white_circle_filled"
+             android:elevation="12dp"
+             android:padding="@dimen/space_s"
+             android:visibility="visible">
+
+    <ProgressBar
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/loading_animation"
+        style="?android:attr/progressBarStyleSmall"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:indeterminate="true"
+        android:indeterminateDrawable="@drawable/progress_red"/>
+
+</FrameLayout>
+
+
+

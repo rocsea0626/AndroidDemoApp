@@ -2,4 +2,39 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="gridspace_s">2dp</dimen>
+
+    <dimen name="nav_drawer_width">304dp</dimen>
+
+
+    <item name="lineHeightSpacing" format="float" type="dimen">1</item>
+
+    <dimen name="fontSizeScore">56sp</dimen> <!-- Tux score at Result Detail activity -->
+    <dimen name="fontSizeValue">36sp
+    </dimen> <!-- Running test speed current value at Benchmarking activity -->
+
+    <dimen name="fontSizeEmphasis">19sp</dimen>
+    <dimen name="fontSizeHeading">17sp</dimen>
+
+    <dimen name="font_size_medium">16sp</dimen>
+    <dimen name="fontSizeSmall">14sp</dimen>
+    <dimen name="height_storage_select">72dp</dimen>
+    <dimen name="height_icon">40dp</dimen>
+    <dimen name="width_icon">40dp</dimen>
+
+    <dimen name="space_s">8dp</dimen>
+    <dimen name="space_m">16dp</dimen>
+    <dimen name="space_l">36dp</dimen>
+    <dimen name="loading_anim_white_bg">40dp</dimen>
+    <dimen name="padding_dialog">24dp</dimen>
+    <dimen name="width_icon_big">120dp</dimen>
+    <dimen name="height_icon_big">120dp</dimen>
+
+    <dimen name="list_oneline_height">48dp</dimen>
+    <dimen name="list_twoline_height">72dp</dimen>
+
+    <dimen name="loading_anim_width">56dp</dimen>
+    <dimen name="loading_anim_height">56dp</dimen>
+
+
 </resources>
