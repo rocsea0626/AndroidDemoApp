@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--
+
+    Android built-in themes:
+    Theme.Light: Android 3.0 above
+    Theme.Holo.Light: Android API 11 above
+    Theme.Holo.Light.DarkActionBar: Android API 14 above
+    -->
+
+    <!-- Base theme applied no matter what API -->
+    <style name="AppTheme.Base" parent="Theme.AppCompat.NoActionBar">
+        <!--<item name="android:actionBarStyle">AppTheme.Toolbar</item>-->
+        <!-- Inactive track color(30% transparency) -->
+        <item name="android:colorForeground">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="AppTheme" parent="AppTheme.Base">
+
+    </style>
+
+    <style name="AppTheme.WhiteBackground" parent="AppTheme">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="android:windowBackground">@color/colorWhite</item>
+    </style>
+
+    <style name="Theme.Activity.ColorPrimaryBackground" parent="AppTheme">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="android:windowBackground">@color/colorPrimary</item>
+    </style>
+
+    <style name="Theme.Activity.ColorPrimaryDarkBackground" parent="AppTheme">
+        <item name="colorPrimary">@color/colorPrimaryDarkBlack</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkBlack</item>
+        <item name="android:windowBackground">@color/colorPrimaryDarkBlack</item>
+    </style>
+
+    <style name="Theme.Toolbar.WhiteBackground" parent="ThemeOverlay.AppCompat.ActionBar">
+        <item name="android:background">@color/colorWhite</item>
+        <item name="android:textColorPrimary">@color/colorPrimary</item>
+        <item name="android:textColorSecondary">@color/colorPrimary</item>
+    </style>
+
+    <style name="Theme.Toolbar.RedBackground" parent="ThemeOverlay.AppCompat.ActionBar">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:textColorPrimary">@color/colorWhite</item>
+        <item name="android:textColorSecondary">@color/colorWhite</item>
+    </style>
+
+    <style name="Theme.Toolbar.PopupTheme" parent="ThemeOverlay.AppCompat.ActionBar">
+        <item name="android:background">@color/colorWhite</item>
+        <item name="android:textColor">@color/colorTextBlack</item>
+    </style>
+
+    <style name="Toolbar.OverlayTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="windowActionBarOverlay">true</item>
+        <!--<item name="background">@drawable/actionbar_bg_gradient_light</item>-->
+    </style>
+
+    <style name="Theme.Activity.Dialog" parent="@style/Theme.AppCompat.Light.Dialog">
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/colorWhite</item>
+    </style>
+
+</resources>

@@ -12,7 +12,7 @@
 
         <activity
             android:name=".view.activity.SplashActivity"
-            android:theme="@style/AppTheme.BlackBackground">
+            android:theme="@style/Theme.Activity.ColorPrimaryDarkBackground">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
