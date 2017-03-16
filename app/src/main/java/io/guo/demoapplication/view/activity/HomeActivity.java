@@ -2,21 +2,28 @@ package io.guo.demoapplication.view.activity;
 
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.TextView;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import hugo.weaving.DebugLog;
+import io.guo.demoapplication.HomeComponent;
 import io.guo.demoapplication.R;
+import io.guo.demoapplication.injection.HasComponent;
+import io.guo.demoapplication.presenter.HomePresenter;
+import io.guo.demoapplication.view.HomeView;
+import io.guo.demoapplication.view.fragment.HomeComponentFragment;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements HasComponent<HomeComponent>, HomeView {
 
     private static final String TAG = "HomeActivity";
 
@@ -26,10 +33,22 @@ public class HomeActivity extends AppCompatActivity {
     @BindView(R.id.tool_bar)
     Toolbar toolbar;
 
+    @BindView(R.id.title_home_activity)
+    TextView tvTitle;
+
     private ActionBarDrawerToggle drawerToggle;
 
     @Inject
+    HomePresenter presenter;
+
+    @Inject
     SharedPreferences sharedPreferences;
+
+    /**
+     * Retained fragment to hold an instance of the {@link HomeComponent} across
+     * activity recreations.
+     */
+    private HomeComponentFragment componentFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,23 +62,35 @@ public class HomeActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(TAG);
         setupNavigationDrawer();
 
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        componentFragment = (HomeComponentFragment) fragmentManager
+                .findFragmentByTag(HomeComponentFragment.TAG);
+
+        // If the Fragment is non-null, then it is currently being retained across a
+        // configuration change. Otherwise create it for the first time.
+        if (componentFragment == null) {
+            componentFragment = HomeComponentFragment.newInstance();
+            fragmentManager.beginTransaction()
+                    .add(componentFragment, HomeComponentFragment.TAG).commit();
+        }
+
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-//        componentFragment.getComponent().inject(this);
+        componentFragment.getComponent().inject(this);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-//        presenter.takeView(this, getLocalClassName());
+        presenter.takeView(this, getLocalClassName());
     }
 
     @Override
     protected void onStop() {
-//        presenter.dropView();
+        presenter.dropView();
         super.onStop();
     }
 
@@ -97,5 +128,15 @@ public class HomeActivity extends AppCompatActivity {
         };
         navDrawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
+    }
+
+    @Override
+    public HomeComponent getComponent() {
+        return componentFragment.getComponent();
+    }
+
+    @Override
+    public void informHomeViewReady() {
+        tvTitle.setText(TAG + " is ready");
     }
 }
