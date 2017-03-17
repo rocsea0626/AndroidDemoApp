@@ -7,4 +7,6 @@
     <string name="close_nav_drawer">Close Navigation Drawer</string>
     <string name="title_nav_dialog_activity">Dialog Activity</string>
     <string name="subtitle_nav_dialog_activity">Activity in Dialog style</string>
+    <string name="title_nav_about_me">About Me</string>
+    <string name="subtitle_nav_about_me">Find more about me</string>
 </resources>

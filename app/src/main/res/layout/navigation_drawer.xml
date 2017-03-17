@@ -1,80 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_drawer_view"
-    style="@style/DrawerLayout"
-    android:background="@color/colorPrimary"
-    android:clickable="true"
-    android:padding="@dimen/space_m">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:id="@+id/nav_drawer_view"
+              style="@style/DrawerLayout"
+              android:background="@color/colorPrimary"
+              android:clickable="true"
+              android:orientation="vertical"
+              android:padding="@dimen/space_m">
 
-    <LinearLayout
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/nav_list_menu"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <android.support.v7.widget.GridLayout
+        android:id="@+id/containter_about_me"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_centerVertical="true">
+        android:background="@android:drawable/list_selector_background"
+        android:minHeight="@dimen/list_twoline_height"
+        android:paddingBottom="@dimen/space_m"
+        android:paddingTop="@dimen/space_m"
+        app:columnCount="2"
+        app:rowOrderPreserved="false"
+        app:useDefaultMargins="false">
 
-        <android.support.v7.widget.GridLayout
-            android:id="@+id/containter_nav_tabs_activity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="@dimen/list_twoline_height"
-            android:paddingTop="@dimen/space_m"
-            android:paddingBottom="@dimen/space_m"
-            android:background="@android:drawable/list_selector_background"
-            app:columnCount="2"
-            app:rowOrderPreserved="false"
-            app:useDefaultMargins="false">
+        <ImageView
+            android:layout_width="@dimen/width_icon"
+            android:layout_height="@dimen/width_icon"
+            android:layout_marginRight="@dimen/space_m"
+            android:scaleType="centerInside"
+            app:layout_gravity="center_vertical"
+            app:layout_rowSpan="2"/>
 
-            <ImageView
-                android:layout_width="@dimen/width_icon"
-                android:layout_height="@dimen/width_icon"
-                android:layout_marginRight="@dimen/space_m"
-                android:scaleType="centerInside"
-                app:layout_gravity="center_vertical"
-                app:layout_rowSpan="2" />
+        <TextView
+            style="@style/Title.ListItem"
+            android:text="@string/title_nav_about_me"/>
 
-            <TextView
-                style="@style/Title.Navigation"
-                android:text="@string/title_nav_tabs_activity" />
+        <TextView
+            style="@style/Subtitle.ListItem"
+            android:text="@string/subtitle_nav_about_me"/>
 
-            <TextView
-                style="@style/Subtitle.Navigation"
-                android:text="@string/subtitle_nav_tabs_activity" />
+    </android.support.v7.widget.GridLayout>
 
-        </android.support.v7.widget.GridLayout>
-
-        <android.support.v7.widget.GridLayout
-            android:id="@+id/containter_dialog_activity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:drawable/list_selector_background"
-            android:minHeight="@dimen/list_twoline_height"
-            android:paddingTop="@dimen/space_m"
-            android:paddingBottom="@dimen/space_m"
-            app:columnCount="2"
-            app:rowOrderPreserved="false"
-            app:useDefaultMargins="false">
-
-            <ImageView
-                android:layout_width="@dimen/width_icon"
-                android:layout_height="@dimen/width_icon"
-                android:layout_marginRight="@dimen/space_m"
-                android:scaleType="centerInside"
-                app:layout_gravity="center_vertical"
-                app:layout_rowSpan="2" />
-
-            <TextView
-                style="@style/Title.Navigation"
-                android:text="@string/title_nav_dialog_activity" />
-
-            <TextView
-                style="@style/Subtitle.Navigation"
-                android:text="@string/subtitle_nav_dialog_activity" />
-
-        </android.support.v7.widget.GridLayout>
-
-    </LinearLayout>
+    <!--</LinearLayout>-->
 
 
-
-</RelativeLayout>
+</LinearLayout>

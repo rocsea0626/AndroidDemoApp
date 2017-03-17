@@ -1,6 +1,10 @@
 package io.guo.demoapplication.view;
 
-public interface HomeView {
+import android.content.pm.ActivityInfo;
+
+public interface HomeView extends ContentView {
 
     void informHomeViewReady();
+
+    void informActivity(ActivityInfo activityInfo);
 }

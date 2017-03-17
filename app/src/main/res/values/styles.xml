@@ -6,7 +6,7 @@
         <item name="android:layout_gravity">start</item>
     </style>
 
-    <style name="Title.Navigation" parent="@style/TextAppearance.AppCompat.Subhead">
+    <style name="Title.ListItem" parent="@style/TextAppearance.AppCompat.Subhead">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:singleLine">true</item>
@@ -17,7 +17,7 @@
         <item name="android:lineSpacingMultiplier">@dimen/lineHeightSpacing</item>
     </style>
 
-    <style name="Subtitle.Navigation" parent="Title.Navigation">
+    <style name="Subtitle.ListItem" parent="Title.ListItem">
         <item name="android:textSize">@dimen/fontSizeSmall</item>
         <item name="android:textColor">@color/colorWhite80</item>
         <item name="android:fontFamily">sans-serif</item>

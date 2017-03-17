@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
+    android:paddingLeft="@dimen/padding_dialog"
+    android:paddingRight="@dimen/padding_dialog"
+    android:minHeight="@dimen/list_twoline_height"
+    android:clickable="true"
+    android:focusable="true">
+
+    <ImageView
+        android:id="@+id/icon"
+        android:scaleType="centerInside"
+        android:layout_width="@dimen/width_icon"
+        android:layout_height="@dimen/width_icon"
+        android:layout_marginRight="@dimen/space_m"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"/>
+
+    <TextView
+        android:id="@+id/title"
+        style="@style/Title.ListItem"
+        android:layout_alignWithParentIfMissing="true"
+        android:layout_marginTop="@dimen/space_m"
+        android:layout_toRightOf="@id/icon"
+        android:gravity="left"
+        tools:text="A rather long title for a song so we can test marquee" />
+
+    <TextView
+        android:id="@+id/subtitle"
+        style="@style/Subtitle.ListItem"
+        android:layout_alignWithParentIfMissing="true"
+        android:layout_below="@id/title"
+        android:layout_toRightOf="@id/icon"
+        android:gravity="left"
+        tools:text="A rather long name for an artist so we can test marquee" />
+
+</RelativeLayout>
