@@ -45,6 +45,15 @@ public class NavigationMenuListAdapter extends RecyclerView.Adapter<NavigationMe
         String[] tokens = item.getActivityInfo().name.split("\\.");
         viewHolder.title.setText(tokens[tokens.length - 1]);
         viewHolder.subtitle.setText(item.getActivityInfo().targetActivity);
+
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (listener != null) {
+                    listener.onListMenuItemClicked(item);
+                }
+            }
+        });
     }
 
     @Override
