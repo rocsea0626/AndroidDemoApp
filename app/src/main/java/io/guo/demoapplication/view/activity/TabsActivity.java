@@ -139,12 +139,17 @@ public class TabsActivity extends AppCompatActivity implements HasComponent<Tabs
     }
 
     @Override
-    public void informTabsViewReady() {
+    public void informActivityReady() {
 
     }
 
     @Override
     public void informActivity(ActivityInfo activityInfo) {
+
+    }
+
+    @Override
+    public void clearActivityDataset() {
 
     }
 

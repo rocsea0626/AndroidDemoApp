@@ -53,7 +53,7 @@ public class HomePresenter extends ViewPresenter<HomeView> {
     private void informLaunchHomeActivity() {
         HomeView view = getView();
         if (view != null) {
-            view.informHomeViewReady();
+            view.informActivityReady();
         }
     }
 

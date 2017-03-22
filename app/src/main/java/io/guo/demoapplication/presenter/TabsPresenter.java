@@ -53,7 +53,7 @@ public class TabsPresenter extends ViewPresenter<TabsView> {
     private void informLaunchHomeActivity() {
         TabsView view = getView();
         if (view != null) {
-            view.informTabsViewReady();
+            view.informActivityReady();
         }
     }
 
