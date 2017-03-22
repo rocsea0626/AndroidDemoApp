@@ -24,6 +24,12 @@
             android:name=".view.activity.HomeActivity"
             android:launchMode="singleTask"
             android:theme="@style/AppTheme.WhiteBackground" />
+
+        <activity
+            android:name=".view.activity.TabsActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.WhiteBackground" />
+
     </application>
 
 </manifest>

@@ -24,4 +24,21 @@
         <item name="android:textStyle">normal</item>
     </style>
 
+    <!-- Title for tab view-->
+    <style name="tabTitle">
+        <item name="android:textSize">@dimen/fontSizeSmall</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="Divider">
+        <item name="android:layout_marginTop">0dp</item>
+        <item name="android:layout_marginBottom">0dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/colorSecondary05</item>
+    </style>
+
 </resources>
