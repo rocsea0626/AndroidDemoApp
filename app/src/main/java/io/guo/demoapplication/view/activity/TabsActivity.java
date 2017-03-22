@@ -1,14 +1,14 @@
 package io.guo.demoapplication.view.activity;
 
-import android.content.pm.ActivityInfo;
+import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 
 import javax.inject.Inject;
 
@@ -23,9 +23,11 @@ import io.guo.demoapplication.view.TabsView;
 import io.guo.demoapplication.view.fragment.TabsComponentFragment;
 import io.guo.demoapplication.view.fragment.TabsPagerFragment;
 
-public class TabsActivity extends AppCompatActivity implements HasComponent<TabsComponent>, TabsView{
+public class TabsActivity extends BaseActivity implements HasComponent<TabsComponent>,
+        TabsView {
 
-    private static final String TAG = "TabsActivity";
+    public static final String TAG = "TabsActivity";
+    private static final String CALLING_CLASS_NAME_ARG = "CALLING_CLASS_NAME_ARG";
 
     @BindView(R.id.tool_bar)
     Toolbar toolbar;
@@ -33,13 +35,21 @@ public class TabsActivity extends AppCompatActivity implements HasComponent<Tabs
     @BindView(R.id.nav_drawer_layout)
     DrawerLayout navDrawerLayout;
 
+    @BindView(R.id.nav_list_menu)
+    RecyclerView rcMenuList;
+
     private TabsComponentFragment componentFragment;
     private TabsPagerFragment tabsPagerFragment;
 
-    private ActionBarDrawerToggle drawerToggle;
-
     @Inject
     TabsPresenter presenter;
+
+    public static Intent newStartIntent(Context context,
+                                        String callingClassName) {
+        Intent intent = new Intent(context, TabsActivity.class);
+        intent.putExtra(CALLING_CLASS_NAME_ARG, callingClassName);
+        return intent;
+    }
 
 
     @DebugLog
@@ -52,7 +62,12 @@ public class TabsActivity extends AppCompatActivity implements HasComponent<Tabs
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setTitle(TAG);
-        setupNavigationDrawer();
+        setupNavigationDrawer(navDrawerLayout, toolbar);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        rcMenuList.setLayoutManager(layoutManager);
+        rcMenuList.setAdapter(adapter);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         componentFragment = (TabsComponentFragment) fragmentManager
@@ -110,47 +125,9 @@ public class TabsActivity extends AppCompatActivity implements HasComponent<Tabs
         super.onConfigurationChanged(newConfig);
         drawerToggle.onConfigurationChanged(newConfig);
     }
-
-    private void setupNavigationDrawer() {
-        drawerToggle = new ActionBarDrawerToggle(this, navDrawerLayout, toolbar, R.string
-                .open_nav_drawer, R.string.close_nav_drawer) {
-
-            @DebugLog
-            @Override
-            public void onDrawerOpened(View drawerView) {
-                super.onDrawerOpened(drawerView);
-                supportInvalidateOptionsMenu();
-            }
-
-            @DebugLog
-            @Override
-            public void onDrawerClosed(View drawerView) {
-                super.onDrawerClosed(drawerView);
-                supportInvalidateOptionsMenu();
-            }
-        };
-        navDrawerLayout.addDrawerListener(drawerToggle);
-        drawerToggle.syncState();
-    }
-
     @Override
     public TabsComponent getComponent() {
         return componentFragment.getComponent();
-    }
-
-    @Override
-    public void informActivityReady() {
-
-    }
-
-    @Override
-    public void informActivity(ActivityInfo activityInfo) {
-
-    }
-
-    @Override
-    public void clearActivityDataset() {
-
     }
 
 }

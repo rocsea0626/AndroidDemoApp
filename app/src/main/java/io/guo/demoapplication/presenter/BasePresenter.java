@@ -34,6 +34,7 @@ public class BasePresenter<V extends BaseActivityView> extends ViewPresenter<V> 
         super.onViewDropped(view);
     }
 
+    @DebugLog
     private void prepareNavigationMenuList() {
         try {
             ActivityInfo[] list = application.getPackageManager().getPackageInfo(application

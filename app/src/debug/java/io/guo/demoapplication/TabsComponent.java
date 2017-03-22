@@ -6,11 +6,14 @@ import io.guo.demoapplication.injection.scope.TabsScope;
 import io.guo.demoapplication.view.activity.TabsActivity;
 import io.guo.demoapplication.view.adapter.TabsPagerAdapter;
 import io.guo.demoapplication.view.fragment.TabOneFragment;
+import io.guo.demoapplication.view.fragment.TabThreeFragment;
+import io.guo.demoapplication.view.fragment.TabTwoFragment;
 
 
 @TabsScope
 @Component(dependencies = ApplicationComponent.class, modules = TabsModule.class)
-public interface TabsComponent extends TabsPagerAdapter.Injector, TabOneFragment.Injector {
+public interface TabsComponent extends TabsPagerAdapter.Injector, TabOneFragment.Injector,
+        TabTwoFragment.Injector, TabThreeFragment.Injector {
 
     TabsActivity inject(TabsActivity activity);
 

@@ -21,6 +21,7 @@ import io.guo.demoapplication.view.fragment.SplashComponentFragment;
 public class SplashActivity extends AppCompatActivity implements HasComponent<SplashComponent>,
         SplashView {
 
+    public static final CharSequence TAG = "SplashActivity";
     @Inject
     SplashPresenter presenter;
 
