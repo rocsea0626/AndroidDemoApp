@@ -11,6 +11,7 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import io.guo.demoapplication.DemoApplication;
+import io.guo.demoapplication.utils.LocalMusicManager;
 
 @Module
 public final class ApplicationModule {
@@ -32,11 +33,11 @@ public final class ApplicationModule {
         return app.getSharedPreferences(PREFS_DEFAULT, Context.MODE_PRIVATE);
     }
 
-//    @Singleton
-//    @Provides
-//    DatabaseManager databaseManager() {
-//        return DatabaseManager.getManager();
-//    }
+    @Singleton
+    @Provides
+    LocalMusicManager localMusicManager(DemoApplication app) {
+        return LocalMusicManager.getInstance(app);
+    }
 
     @Singleton
     @Provides

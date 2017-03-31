@@ -1,7 +1,6 @@
 package io.guo.demoapplication.view;
 
-public interface TabOneView extends ContentView {
+public interface TabOneView extends FragmentView {
 
-    void informTabOneReady();
-
+    void informTimeStamp(long timeStamp);
 }

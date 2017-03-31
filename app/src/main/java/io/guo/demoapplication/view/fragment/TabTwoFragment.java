@@ -15,10 +15,10 @@ import butterknife.ButterKnife;
 import hugo.weaving.DebugLog;
 import io.guo.demoapplication.R;
 import io.guo.demoapplication.injection.HasComponent;
-import io.guo.demoapplication.presenter.TabOnePresenter;
-import io.guo.demoapplication.view.TabOneView;
+import io.guo.demoapplication.presenter.TabTwoPresenter;
+import io.guo.demoapplication.view.TabTwoView;
 
-public class TabTwoFragment extends Fragment implements TabOneView {
+public class TabTwoFragment extends Fragment implements TabTwoView {
 
     public static final String TAG = "TabTwoFragment";
 
@@ -26,7 +26,7 @@ public class TabTwoFragment extends Fragment implements TabOneView {
     TextView tvTitle;
 
     @Inject
-    TabOnePresenter presenter;
+    TabTwoPresenter presenter;
 
     public static Fragment newInstance() {
         TabTwoFragment fragment = new TabTwoFragment();
@@ -69,12 +69,13 @@ public class TabTwoFragment extends Fragment implements TabOneView {
     }
 
     @Override
-    public void informTabOneReady() {
-        tvTitle.setText(TAG + " is ready");
+    public void clearDataSet() {
+
     }
 
     @Override
-    public void clearDataSet() {
+    public void informViewReady() {
+
 
     }
 

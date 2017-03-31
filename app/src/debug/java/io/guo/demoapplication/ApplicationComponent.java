@@ -8,6 +8,7 @@ import javax.inject.Singleton;
 
 import dagger.Component;
 import io.guo.demoapplication.injection.module.ApplicationModule;
+import io.guo.demoapplication.utils.LocalMusicManager;
 
 @Singleton
 @Component(modules = {ApplicationModule.class})
@@ -20,7 +21,7 @@ public interface ApplicationComponent {
 
     SharedPreferences sharedPreferences();
 
-//    StorageManager storageManager();
+    LocalMusicManager localMusicManager();
 
     EventBus eventBus();
 

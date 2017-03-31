@@ -24,6 +24,17 @@
         <item name="android:textStyle">normal</item>
     </style>
 
+    <style name="lightListSingleTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/fontSizeSmall</item>
+        <item name="android:textColor">@color/colorSecondary</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:lineSpacingMultiplier">@dimen/lineHeightSpacing</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
     <!-- Title for tab view-->
     <style name="tabTitle">
         <item name="android:textSize">@dimen/fontSizeSmall</item>

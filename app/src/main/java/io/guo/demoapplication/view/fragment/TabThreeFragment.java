@@ -69,13 +69,18 @@ public class TabThreeFragment extends Fragment implements TabOneView {
     }
 
     @Override
-    public void informTabOneReady() {
-        tvTitle.setText(TAG + " is ready");
+    public void clearDataSet() {
+
     }
 
     @Override
-    public void clearDataSet() {
+    public void informTimeStamp(long timeStamp) {
 
+    }
+
+    @Override
+    public void informViewReady() {
+        tvTitle.setText(TAG + " is ready");
     }
 
     public interface Injector {

@@ -3,6 +3,8 @@ package io.guo.demoapplication.view.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +19,7 @@ import io.guo.demoapplication.R;
 import io.guo.demoapplication.injection.HasComponent;
 import io.guo.demoapplication.presenter.TabOnePresenter;
 import io.guo.demoapplication.view.TabOneView;
+import io.guo.demoapplication.view.adapter.TabOneListAdapter;
 
 public class TabOneFragment extends Fragment implements TabOneView {
 
@@ -25,8 +28,14 @@ public class TabOneFragment extends Fragment implements TabOneView {
     @BindView(R.id.title_tab)
     TextView tvTitle;
 
+    @BindView(R.id.list_timestamp)
+    RecyclerView rvListTimeStamp;
+
     @Inject
     TabOnePresenter presenter;
+
+    @Inject
+    TabOneListAdapter adapter;
 
     public static Fragment newInstance() {
         TabOneFragment fragment = new TabOneFragment();
@@ -44,6 +53,11 @@ public class TabOneFragment extends Fragment implements TabOneView {
             savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_tab, container, false);
         ButterKnife.bind(this, rootView);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        rvListTimeStamp.setLayoutManager(layoutManager);
+        rvListTimeStamp.setHasFixedSize(true);
         return rootView;
     }
 
@@ -69,13 +83,18 @@ public class TabOneFragment extends Fragment implements TabOneView {
     }
 
     @Override
-    public void informTabOneReady() {
-        tvTitle.setText(TAG + " is ready");
+    public void informTimeStamp(long timeStamp) {
+        adapter.add(timeStamp);
     }
 
     @Override
     public void clearDataSet() {
 
+    }
+
+    @Override
+    public void informViewReady() {
+        tvTitle.setText(TAG + " is ready");
     }
 
     public interface Injector {
