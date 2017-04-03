@@ -1,19 +1,19 @@
 package io.guo.demoapplication.presenter;
 
-import java.util.List;
-
 import hugo.weaving.DebugLog;
 import io.guo.demoapplication.DemoApplication;
 import io.guo.demoapplication.data.AudioInfo;
 import io.guo.demoapplication.model.TabTwoModel;
 import io.guo.demoapplication.view.TabTwoView;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.observers.DisposableObserver;
+import io.reactivex.schedulers.Schedulers;
 
 public class TabTwoPresenter extends ViewPresenter<TabTwoView> {
 
     private final DemoApplication application;
     private TabTwoModel tabTwoModel;
-    private DisposableObserver<Long> disposable;
+    private DisposableObserver<AudioInfo> disposable;
 
     public TabTwoPresenter(DemoApplication application, TabTwoModel tabTwoModel) {
         super();
@@ -57,7 +57,32 @@ public class TabTwoPresenter extends ViewPresenter<TabTwoView> {
 
     @DebugLog
     private void getLocalSongs() {
-        List<AudioInfo> list = tabTwoModel.dicoverLocalSongs();
+        disposable = tabTwoModel.dicoverLocalSongsObservable().subscribeOn(Schedulers.io())
+                .observeOn
+                (AndroidSchedulers.mainThread()).subscribeWith(new DisposableObserver<AudioInfo>() {
+
+            @Override
+            public void onNext(AudioInfo audioInfo) {
+                informLocalSong(audioInfo);
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onComplete() {
+
+            }
+        });
+    }
+
+    private void informLocalSong(AudioInfo audioInfo) {
+        TabTwoView view = getView();
+        if(view != null){
+            view.informLocalSong(audioInfo);
+        }
     }
 
 //    }

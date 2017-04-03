@@ -4,5 +4,5 @@
     app:elevation="0dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:theme="@style/Theme.Toolbar.RedBackground"
+    app:theme="@style/Theme.Toolbar.BlueBackground"
     />

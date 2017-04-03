@@ -15,6 +15,7 @@ import io.guo.demoapplication.presenter.TabTwoPresenter;
 import io.guo.demoapplication.presenter.TabsPresenter;
 import io.guo.demoapplication.utils.LocalMusicManager;
 import io.guo.demoapplication.view.adapter.TabOneListAdapter;
+import io.guo.demoapplication.view.adapter.TabTwoListAdapter;
 
 @Module
 public class TabsModule {
@@ -63,6 +64,12 @@ public class TabsModule {
     @Provides
     TabOneListAdapter tabOneListAdapter() {
         return new TabOneListAdapter();
+    }
+
+    @TabsScope
+    @Provides
+    TabTwoListAdapter tabTwoListAdapter() {
+        return new TabTwoListAdapter();
     }
 
 }

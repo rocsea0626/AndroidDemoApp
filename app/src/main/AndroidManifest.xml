@@ -30,7 +30,7 @@
         <activity
             android:name=".view.activity.TabsActivity"
             android:launchMode="singleTask"
-            android:theme="@style/AppTheme.WhiteBackground" />
+            android:theme="@style/AppTheme.BlackBackground" />
 
     </application>
 

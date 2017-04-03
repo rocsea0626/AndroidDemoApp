@@ -28,8 +28,8 @@ public class TabOneFragment extends Fragment implements TabOneView {
     @BindView(R.id.title_tab)
     TextView tvTitle;
 
-    @BindView(R.id.list_timestamp)
-    RecyclerView rvListTimeStamp;
+    @BindView(R.id.rv_list)
+    RecyclerView rvList;
 
     @Inject
     TabOnePresenter presenter;
@@ -56,8 +56,8 @@ public class TabOneFragment extends Fragment implements TabOneView {
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        rvListTimeStamp.setLayoutManager(layoutManager);
-        rvListTimeStamp.setHasFixedSize(true);
+        rvList.setLayoutManager(layoutManager);
+        rvList.setHasFixedSize(true);
         return rootView;
     }
 
@@ -66,6 +66,8 @@ public class TabOneFragment extends Fragment implements TabOneView {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         ((HasComponent<Injector>) getActivity()).getComponent().inject(this);
+        rvList.setAdapter(adapter);
+
     }
 
     @DebugLog

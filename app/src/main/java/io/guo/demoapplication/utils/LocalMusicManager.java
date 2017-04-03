@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.provider.MediaStore;
 
+import io.reactivex.Observable;
+
 public class LocalMusicManager {
 
     static final String[] PROJECTION_AUDIO = new String[]{MediaStore.Audio.Media._ID,
@@ -34,6 +36,11 @@ public class LocalMusicManager {
                         null, null, sortOrder);
     }
 
+    public Observable<Cursor> discoverSongsObservable(){
+        String sortOrder = "title ASC";
 
+        return Observable.create(new OnSubscribeQuery(resolver, MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, PROJECTION_AUDIO,
+                null, null, sortOrder));
+    }
 
 }
